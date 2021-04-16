@@ -8,24 +8,44 @@ import java.util.List;
 
 import com.gzem2.departmentapp.model.Department;
 
+import org.flywaydb.core.Flyway;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 @TestMethodOrder(OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class DepartmentDaoTests {
 
+	@Value("${spring.datasource.url}")
+	private String url;
+
+	@Value("${spring.datasource.username}")
+	private String username;
+
+	@Value("${spring.datasource.password}")
+	private String password;
+
 	@Autowired
 	DepartmentDao dao;
-	
+
 	Department dep;
 	Long new_dep_id;
+
+	@BeforeAll
+	void beforeAllTests() {
+		Flyway flyway = Flyway.configure().dataSource(url, username, password).load();
+		flyway.migrate();
+	}
 
 	@Test
 	@Order(1)

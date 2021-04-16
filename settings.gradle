@@ -1,0 +1,3 @@
+rootProject.name = 'departmentapp'
+
+include ':model', ':dao', ':service', ':rest', ':webapp'

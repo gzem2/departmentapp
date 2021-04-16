@@ -1,0 +1,33 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "org.flywaydb.flyway" version "7.7.3"
+	id 'java'
+}
+
+group = 'com.gzem2.departmentapp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation project(':model')
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'mysql:mysql-connector-java:8.0.23'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+flyway {
+    configFiles = ['src/main/resources/application.properties']
+}
+
+bootJar {
+	enabled = false
+}
+
+test {
+	useJUnitPlatform()
+}

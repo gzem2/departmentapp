@@ -1,0 +1,24 @@
+plugins {
+	id 'java'
+}
+
+group = 'com.gzem2.departmentapp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+ 	testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.1"
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jar {
+    enabled = true
+}

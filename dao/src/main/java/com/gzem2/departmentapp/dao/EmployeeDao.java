@@ -36,7 +36,7 @@ public class EmployeeDao implements IEmployeeDao {
     }
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public Long createEmployee(Employee emp) {

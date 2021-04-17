@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class DepartmentDao implements IDepartmentDao {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public Long createDepartment(Department dep) {

@@ -20,8 +20,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Long createDepartment(Department dep) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to createDepartment(Department dep) : {}", dep);
+        if(log.isInfoEnabled()) {
+            log.info("call to createDepartment(Department dep) : {}", dep);
         }
 
         return depdao.createDepartment(dep);
@@ -29,8 +29,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Department findDepartmentById(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findDepartmentById(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to findDepartmentById(Long id) : {}", id);
         }
 
         return depdao.findDepartmentById(id);
@@ -38,8 +38,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public List<Department> findDepartmentsByName(String departmentName) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findDepartmentsByName(String departmentName) : {}", departmentName);
+        if(log.isInfoEnabled()) {
+            log.info("call to findDepartmentsByName(String departmentName) : {}", departmentName);
         }
 
         return depdao.findDepartmentsByName(departmentName);
@@ -47,8 +47,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public List<Department> findAllDepartments() {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findAllDepartments()");
+        if(log.isInfoEnabled()) {
+            log.info("call to findAllDepartments()");
         }
 
         return depdao.findAllDepartments();
@@ -56,8 +56,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void updateDepartment(Long id, Department dep) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to updateDepartment(Long id, Department dep) : {}, {}", id, dep);
+        if(log.isInfoEnabled()) {
+            log.info("call to updateDepartment(Long id, Department dep) : {}, {}", id, dep);
         }
 
         depdao.updateDepartment(id, dep);
@@ -65,8 +65,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void deleteDepartment(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to deleteDepartment(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to deleteDepartment(Long id) : {}", id);
         }
 
         depdao.deleteDepartment(id);

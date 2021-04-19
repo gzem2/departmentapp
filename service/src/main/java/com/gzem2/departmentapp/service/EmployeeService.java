@@ -22,8 +22,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Integer findEmployeeAverageSalaryByDepartment(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeeAverageSalaryByDepartment(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeeAverageSalaryByDepartment(Long id) : {}", id);
         }
 
         Integer sum = 0;
@@ -39,8 +39,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesBornBetween(LocalDate dateFrom, LocalDate dateTo) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesBornBetween(LocalDate dateFrom, LocalDate dateTo) : {}, {}", dateFrom, dateTo);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesBornBetween(LocalDate dateFrom, LocalDate dateTo) : {}, {}", dateFrom, dateTo);
         }
 
         List<Employee> employees = this.findAllEmployees();
@@ -58,8 +58,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Long createEmployee(Employee emp) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to createEmployee(Employee emp) : {}", emp);
+        if(log.isInfoEnabled()) {
+            log.info("call to createEmployee(Employee emp) : {}", emp);
         }
 
         return empdao.createEmployee(emp);
@@ -67,8 +67,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee findEmployeeById(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeeById(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeeById(Long id) : {}", id);
         }
 
         return empdao.findEmployeeById(id);
@@ -76,8 +76,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesByDepartmentId(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesByDepartmentId(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesByDepartmentId(Long id) : {}", id);
         }
 
         return empdao.findEmployeesByDepartmentId(id);
@@ -85,8 +85,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesBySurname(String surname) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesBySurname(String surname) : {}", surname);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesBySurname(String surname) : {}", surname);
         }
 
         return empdao.findEmployeesBySurname(surname);
@@ -94,8 +94,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesByName(String name) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesByName(String name) : {}", name);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesByName(String name) : {}", name);
         }
         
         return empdao.findEmployeesByName(name);
@@ -103,8 +103,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesByPatronymic(String patronymic) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesByPatronymic(String patronymic) : {}", patronymic);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesByPatronymic(String patronymic) : {}", patronymic);
         }
 
         return empdao.findEmployeesByPatronymic(patronymic);
@@ -112,8 +112,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesByFullName(String fullname) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesByFullName(String fullname) : {}", fullname);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesByFullName(String fullname) : {}", fullname);
         }
 
         return empdao.findEmployeesByFullName(fullname);
@@ -121,8 +121,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesByBirthday(LocalDate birthday) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesByBirthday(LocalDate birthday) : {}", birthday);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesByBirthday(LocalDate birthday) : {}", birthday);
         }
 
         return empdao.findEmployeesByBirthday(birthday);
@@ -130,8 +130,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findEmployeesBySalary(Integer salary) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findEmployeesBySalary(Integer salary) : {}", salary);
+        if(log.isInfoEnabled()) {
+            log.info("call to findEmployeesBySalary(Integer salary) : {}", salary);
         }
 
         return empdao.findEmployeesBySalary(salary);
@@ -139,8 +139,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> findAllEmployees() {
-        if(log.isDebugEnabled()) {
-            log.debug("call to findAllEmployees()");
+        if(log.isInfoEnabled()) {
+            log.info("call to findAllEmployees()");
         }
 
         return empdao.findAllEmployees();
@@ -148,8 +148,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void updateEmployee(Long id, Employee emp) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to updateEmployee(Long id, Employee emp) : {}, {}", id, emp);
+        if(log.isInfoEnabled()) {
+            log.info("call to updateEmployee(Long id, Employee emp) : {}, {}", id, emp);
         }
 
         empdao.updateEmployee(id, emp);
@@ -157,8 +157,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void deleteEmployee(Long id) {
-        if(log.isDebugEnabled()) {
-            log.debug("call to deleteEmployee(Long id) : {}", id);
+        if(log.isInfoEnabled()) {
+            log.info("call to deleteEmployee(Long id) : {}", id);
         }
 
         empdao.deleteEmployee(id);

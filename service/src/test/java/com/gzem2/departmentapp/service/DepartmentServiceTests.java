@@ -65,7 +65,7 @@ class DepartmentServiceTests {
 	@Test
     public void testUpdateDepartment() {
 		Mockito.when(depdao.findDepartmentById(1L)).thenReturn(new Department("Different"));
-		depserv.updateDepartment(1L, new Department("Different"));
+		depserv.updateDepartment(1L, new Department(1L, "Different"));
 		Department dep = depserv.findDepartmentById(1L);
 		assertEquals(dep.getDepartmentName(), "Different");
 	}

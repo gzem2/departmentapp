@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 class RestEmployeeController {
@@ -26,27 +28,52 @@ class RestEmployeeController {
 
     @GetMapping("/employees/average/{id}")
     public Integer getAverageSalaryByDepartment(@PathVariable Long id) {
-        return service.findEmployeeAverageSalaryByDepartment(id);
+        Integer avg = service.findEmployeeAverageSalaryByDepartment(id);
+        if(avg == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return avg;
+        }
     }
 
     @GetMapping("/employees/bornbetween/{dateFrom}/{dateTo}")
     public List<Employee> getBornBetween(@PathVariable String dateFrom, @PathVariable String dateTo) {
-        return service.findEmployeesBornBetween(LocalDate.parse(dateFrom), LocalDate.parse(dateTo));
+        List<Employee> emps = service.findEmployeesBornBetween(LocalDate.parse(dateFrom), LocalDate.parse(dateTo));
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees")
     public List<Employee> getAll() {
-        return service.findAllEmployees();
+        List<Employee> emps = service.findAllEmployees();
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/{id}")
     public Employee getById(@PathVariable Long id) {
-        return service.findEmployeeById(id);
+        Employee emp = service.findEmployeeById(id);
+        if(emp == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emp;
+        }
     }
 
     @GetMapping("/employees/department/{id}")
     public List<Employee> getByDepartmentId(@PathVariable Long id) {
-        return service.findEmployeesByDepartmentId(id);
+        List<Employee> emps = service.findEmployeesByDepartmentId(id);
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/surname/{surname}")
@@ -56,7 +83,12 @@ class RestEmployeeController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return service.findEmployeesBySurname(surname);
+        List<Employee> emps = service.findEmployeesBySurname(surname);
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/name/{name}")
@@ -66,7 +98,12 @@ class RestEmployeeController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return service.findEmployeesByName(name);
+        List<Employee> emps = service.findEmployeesByName(name);
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/patronymic/{patronymic}")
@@ -76,7 +113,12 @@ class RestEmployeeController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return service.findEmployeesByPatronymic(patronymic);
+        List<Employee> emps = service.findEmployeesByPatronymic(patronymic);
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/fullname/{fullname}")
@@ -86,12 +128,22 @@ class RestEmployeeController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return service.findEmployeesByFullName(fullname);
+        List<Employee> emps = service.findEmployeesByFullName(fullname);
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/birthday/{birthday}")
     public List<Employee> getByBirthday(@PathVariable String birthday) {
-        return service.findEmployeesByBirthday(LocalDate.parse(birthday));
+        List<Employee> emps = service.findEmployeesByBirthday(LocalDate.parse(birthday));
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @GetMapping("/employees/salary/{salary}")
@@ -101,21 +153,39 @@ class RestEmployeeController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return service.findEmployeesBySalary(Integer.parseInt(salary));
+        List<Employee> emps = service.findEmployeesBySalary(Integer.parseInt(salary));
+        if(emps == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return emps;
+        }
     }
 
     @PostMapping("/employees")
-    public Long create(@RequestBody Employee emp) {
-        return service.createEmployee(emp);
+    public Long create(@RequestBody Employee emp) { 
+        Long id = service.createEmployee(emp);
+        if(id == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } else {
+            return id;
+        }
     }
 
     @PutMapping("/employees/{id}")
     public void update(@RequestBody Employee emp, @PathVariable Long id) {
-        service.updateEmployee(id, emp);
+        try {
+            service.updateEmployee(id, emp);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/employees/{id}")
     public void delete(@PathVariable Long id) {
-        service.deleteEmployee(id);
+        try {
+            service.deleteEmployee(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 }

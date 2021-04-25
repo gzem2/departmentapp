@@ -23,7 +23,7 @@ dependencies {
 }
 
 flyway {
-    configFiles = ['src/main/resources/application.properties']
+    configFiles = ['src/main/resources/application-mysql.properties']
 }
 
 jar {

@@ -15,14 +15,21 @@ repositories {
 
 dependencies {
 	implementation project(':model')
-	implementation project(':service')
+	implementation 'org.json:json:20210307'
 	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.45'
 	implementation 'javax.servlet:jstl:1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	compileOnly 'org.springframework.boot:spring-boot-starter-tomcat:2.4.5'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		exclude group: 'org.mockito', module: 'mockito-core'
+		exclude group: 'org.mockito', module: 'mockito-junit-jupiter'
+	}
+	testImplementation 'org.mockito:mockito-inline:3.4.0'
+	testImplementation 'org.mockito:mockito-junit-jupiter:3.4.0'
+	testImplementation 'org.mockito:mockito-core:3.4.0'
 }
 
 test {
@@ -32,4 +39,11 @@ test {
 bootWar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
 	//setDestinationDirectory(file('D:/devtools/apache-tomcat-9.0.45/webapps'))
+	
+	webInf { 
+      with copySpec({
+         from "${project.rootDir}/web/src/main/resources/META-INF/resources/WEB-INF"
+         into ""
+      })
+	}
 }

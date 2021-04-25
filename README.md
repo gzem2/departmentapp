@@ -7,7 +7,7 @@
 
 ## Настройки соединения MySQL
 Настройки соединения(логин и пароль) с MySQL находятся в файле:<br> 
-`dao/src/main/resources/application.properties`
+`dao/src/main/resources/application-mysql.properties`
 
 ## Миграции ДБ
 

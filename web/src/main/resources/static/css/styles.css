@@ -1,0 +1,35 @@
+table, th, td {
+    border: 1px solid;
+}
+
+body {
+    margin-left: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.birthday-column {
+    text-align: center;
+}
+
+.find-label {
+    display: block;
+    width: 400px;
+}
+
+.form-container {
+    width: max-content;
+}
+
+.submit-button {
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.cancel-button {
+    float: right;
+    margin-top: 5px;
+}

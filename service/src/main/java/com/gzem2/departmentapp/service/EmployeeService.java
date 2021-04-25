@@ -33,8 +33,11 @@ public class EmployeeService implements IEmployeeService {
             sum += e.getSalary();
         }
 
-        Integer averageSalary = sum / employees.size();
-        return averageSalary;
+        if (employees.size() != 0) {
+            return sum / employees.size();
+        } else {
+            return 0;
+        }
     }
 
     @Override

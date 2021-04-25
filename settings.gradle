@@ -1,3 +1,3 @@
 rootProject.name = 'departmentapp'
 
-include ':model', ':dao', ':service', ':rest', ':webapp'
+include ':model', ':dao', ':service', ':rest', ':web'
